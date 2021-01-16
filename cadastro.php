@@ -72,7 +72,7 @@ endif;
                 <img src="logo.png" alt="OrgStore">
             </h1>
             
-            <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+            <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_tab</i>Login</a>
             <a href="index.php" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a>
         
         </header>        

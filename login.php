@@ -4,6 +4,7 @@ require_once 'db_connect.php';
 //SESSÃO
 session_start();
 
+
 if (isset($_POST["btn-login"])):
     $erros = array();
     $login = mysqli_escape_string($connect, $_POST['email_login']);
@@ -22,7 +23,7 @@ if (isset($_POST["btn-login"])):
 
             if(mysqli_num_rows($resultado) == 1):
                 $dados = mysqli_fetch_array($resultado);
-                $_SESSION['logado'] = true;
+                $_SESSION['logado'] = True;
                 $_SESSION['id_usuario'] = $dados['id'];
                 header('Location: index.php');
             else:
@@ -79,10 +80,7 @@ endif;
             <h1>
                 <img src="logo.png" alt="OrgStore">
             </h1>
-            
-            <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
             <a href="index.php" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a>
-        
         </header>
     </div>
     <div class="barra">

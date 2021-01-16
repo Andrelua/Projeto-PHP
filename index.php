@@ -1,14 +1,3 @@
-<?php
-//BANCO DE DADOS
-require_once 'db_connect.php';
-//SESSÃO
-session_start();
-
-$id = $_SESSION['id_usuario'];
-$sql = "SELECT * FROM cliente WHERE id = '$id'";
-$resultado = mysqli_query($connect, $sql);
-$dados = mysqli_fetch_array($resultado);
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,33 +45,23 @@ $dados = mysqli_fetch_array($resultado);
             <h1>
                 <img src="logo.png" alt="OrgStore">
             </h1>
-            <!---->
             <?php
-                if(!isset($_SESSION['logado'])):
+                session_start();
+                $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                if (!$_SESSION['logado']):
+            ?>
+                <a href="carrinho.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+                <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
+                <a href="logout.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">exit_to_app</i>Sair</a>
+            <?php
+                else:
             ?>
                 <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
-
-            <?php
-                else:
-            ?>
-                <a href="carrinho.php" class="waves-effect waves-light btn disable"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
-            <?php
-                endif;
-            ?>
-            <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
-            <!---->
-            <?php
-                if(isset($_SESSION['logado'])):
-            ?>
+                <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
                 <a href="logout.php" class="waves-effect waves-light btn"><i class="material-icons left">exit_to_app</i>Sair</a>
             <?php
-                else:
-            ?>
-                <a href="logout.php" class="waves-effect waves-light btn disable"><i class="material-icons left">exit_to_app</i>Sair</a>
-            <?php
                 endif;
-            ?>
-            <!---->
+            ?> 
             <form method="POST" class='search'>
                 <input type="search" id=busca name="pesquisar" placeholder="Buscar produto...">
                 <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar" title="buscar"><i class="material-icons left">search</i></button>
@@ -116,9 +95,22 @@ $dados = mysqli_fetch_array($resultado);
                 <p>O valor do <?php echo $frutas[$i]["nome"];?> é R$<?php echo $frutas[$i]["preco"];?> <?php echo $frutas[$i]["tipo"];?></p>
                 <form method="GET" action="carrinho.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                    <?php
+                        else:
+                    ?>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
                         <i class="material-icons right">shopping_cart</i>
                     </button>
+                    <?php
+                        endif;
+                    ?> 
                 </form>
             </div>
         <?php
@@ -140,9 +132,22 @@ $dados = mysqli_fetch_array($resultado);
                 <p>O valor do <?php echo $verduras[$i]["nome"];?> é R$<?php echo $verduras[$i]["preco"];?> <?php echo $verduras[$i]["tipo"];?></p>
                 <form method="GET" action="carrinho.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                    <?php
+                        else:
+                    ?>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
                         <i class="material-icons right">shopping_cart</i>
                     </button>
+                    <?php
+                        endif;
+                    ?>
                 </form>
             </div>
         <?php
@@ -165,9 +170,22 @@ $dados = mysqli_fetch_array($resultado);
                 <p>O valor do <?php echo $folhas[$i]["nome"];?> é R$<?php echo $folhas[$i]["preco"];?> <?php echo $folhas[$i]["tipo"];?></p>
                 <form method="GET" action="carrinho.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                    <?php
+                        else:
+                    ?>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
                         <i class="material-icons right">shopping_cart</i>
                     </button>
+                    <?php
+                        endif;
+                    ?>
                 </form>
             </div>
         <?php
@@ -189,9 +207,22 @@ $dados = mysqli_fetch_array($resultado);
                 <p>O valor do <?php echo $raizes[$i]["nome"];?> é R$<?php echo $raizes[$i]["preco"];?> <?php echo $raizes[$i]["tipo"];?></p>
                 <form method="GET" action="carrinho.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0" step="0.5">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                    <?php
+                        else:
+                    ?>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
                         <i class="material-icons right">shopping_cart</i>
                     </button>
+                    <?php
+                        endif;
+                    ?>
                 </form>
             </div>
         <?php
