@@ -1,3 +1,27 @@
+<?php
+// Sessão
+session_start();
+//Conexão com o db
+require_once "db_connect.php";
+
+if (isset($_POST["btn-cadastrar"])):
+    $erros = array();
+    $nome = mysqli_escape_string($connect, $_POST['nome']);
+    $email = mysqli_escape_string($connect, $_POST['email_cadastro']);
+    $senha = mysqli_escape_string($connect, $_POST['senha_cadastro']);
+    if(empty($nome) or empty($email) or empty($senha)):
+        $erros[] = "<div>Erro no cadastro - Algum campo deve estar vazio.</div>";
+    else:
+        $senha = md5($senha);
+        $sql = "INSERT INTO cliente (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
+        if(mysqli_query($connect, $sql)):
+            header('Location: login.php');
+        else:
+            header('Location: cadastro.php');
+        endif;
+    endif;
+endif;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,6 +46,13 @@
         }
         .sistema input[type="password"]{
             width: 20%;
+        }
+        .sistema input[type="text"]{
+            width: 20%;
+        }
+        .sistema div{
+            background-color: red;
+            font-size: large;
         }
         .barra {
             background-color: #ee6e73;
@@ -50,10 +81,18 @@
         <strong>Cadastro</strong>
     </div>
     <div class="sistema">
+        <?php 
+        if(!empty($erros)):
+            foreach($erros as $erro):
+                echo $erro;
+            endforeach;
+        endif;
+        ?>
         <form method="POST">
+            Nome: <input type="text" name="nome"> <br>
             Email: <input type="email" name="email_cadastro"> <br>
             Senha: <input type="password" name="senha_cadastro"> <br>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+            <button class="btn waves-effect waves-light" type="submit" name="btn-cadastrar">Cadastrar
                 <i class="material-icons right">done</i>
             </button> <br>
         </form>

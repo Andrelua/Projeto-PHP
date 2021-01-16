@@ -69,9 +69,9 @@
 
         <tbody>
           <tr>
-            <td>#101</td>
-            <td>Banana</td>
-            <td>R$1.50</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

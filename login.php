@@ -1,3 +1,39 @@
+<?php
+//BANCO DE DADOS
+require_once 'db_connect.php';
+//SESSÃO
+session_start();
+
+if (isset($_POST["btn-login"])):
+    $erros = array();
+    $login = mysqli_escape_string($connect, $_POST['email_login']);
+    $senha = mysqli_escape_string($connect, $_POST['senha_login']);
+
+    if(empty($login) or empty($senha)):
+        $erros[] = "<div>Erro no login - Algum campo deve estar vazio.</div>";
+    else:
+        $sql = "SELECT email FROM cliente WHERE email = '$login'";
+        $resultado = mysqli_query($connect, $sql);
+
+        if(mysqli_num_rows($resultado) > 0):
+            $senha = md5($senha);
+            $sql = "SELECT * FROM cliente WHERE email = '$login' AND senha = '$senha'";
+            $resultado = mysqli_query($connect, $sql);
+
+            if(mysqli_num_rows($resultado) == 1):
+                $dados = mysqli_fetch_array($resultado);
+                $_SESSION['logado'] = true;
+                $_SESSION['id_usuario'] = $dados['id'];
+                header('Location: index.php');
+            else:
+                $erros[] = "<div>Erro no login - Usuário e senha não conferem.</div>";
+            endif;
+        else:
+            $erros[] = "<div>Erro no login - Usuário inexistente.</div>";
+        endif;
+    endif;
+endif;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,6 +59,10 @@
         .sistema input[type="password"]{
             width: 20%;
         }
+        .sistema div{
+            background-color: red;
+            font-size: large;
+        }
         .barra {
             background-color: #ee6e73;
             text-align: center;
@@ -32,7 +72,6 @@
             width: 100%;
         }
     </style>
-
 </head>
 <body>
     <div class="card-panel teal lighten-2">
@@ -50,10 +89,17 @@
         <strong>Login</strong>
     </div>
     <div class="sistema">
-        <form method="POST">
+        <?php 
+            if(!empty($erros)):
+                foreach($erros as $erro):
+                    echo $erro;
+                endforeach;
+            endif;
+        ?>
+        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>">
             Email: <input type="email" name="email_login"> <br>
             Senha: <input type="password" name="senha_login"> <br>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Entrar
+            <button class="btn waves-effect waves-light" type="submit" name="btn-login">Entrar
                 <i class="material-icons right">done</i>
             </button> <br>
             <br>

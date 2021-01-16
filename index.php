@@ -1,3 +1,14 @@
+<?php
+//BANCO DE DADOS
+require_once 'db_connect.php';
+//SESSÃO
+session_start();
+
+$id = $_SESSION['id_usuario'];
+$sql = "SELECT * FROM cliente WHERE id = '$id'";
+$resultado = mysqli_query($connect, $sql);
+$dados = mysqli_fetch_array($resultado);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -45,10 +56,33 @@
             <h1>
                 <img src="logo.png" alt="OrgStore">
             </h1>
-            
-            <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+            <!---->
+            <?php
+                if(!isset($_SESSION['logado'])):
+            ?>
+                <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+
+            <?php
+                else:
+            ?>
+                <a href="carrinho.php" class="waves-effect waves-light btn disable"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+            <?php
+                endif;
+            ?>
             <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
-            
+            <!---->
+            <?php
+                if(isset($_SESSION['logado'])):
+            ?>
+                <a href="logout.php" class="waves-effect waves-light btn"><i class="material-icons left">exit_to_app</i>Sair</a>
+            <?php
+                else:
+            ?>
+                <a href="logout.php" class="waves-effect waves-light btn disable"><i class="material-icons left">exit_to_app</i>Sair</a>
+            <?php
+                endif;
+            ?>
+            <!---->
             <form method="POST" class='search'>
                 <input type="search" id=busca name="pesquisar" placeholder="Buscar produto...">
                 <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar" title="buscar"><i class="material-icons left">search</i></button>
@@ -71,300 +105,98 @@
 
     <div class="row">
         <h2>Frutas</h2>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="frutas/abacate.jpg" alt="abacate" width="100px" height="60px">
+        <?php
+            include("produtos.php");
+            for ($i = 0; $i <= 4; $i++):
+        ?>
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $frutas[$i]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $frutas[$i]["nome"];?> é R$<?php echo $frutas[$i]["preco"];?> <?php echo $frutas[$i]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                </form>
             </div>
-            O valor do abacate é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="frutas/banana.png" alt="banana" width="100px" height="60px">
-            </div>
-            O valor do banana é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="frutas/laranja.png" alt="laranja" width="100px" height="60px">
-            </div>
-            O valor do laranja é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="frutas/pera.png" alt="pêra" width="100px" height="60px">
-            </div>
-            O valor do pêra é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>    
-                <img src="frutas/maca.png" alt="maçã" width="100px" height="60px">
-            </div>
-            O valor do maçã é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
+        <?php
+            endfor;
+        ?>
     </div>
 
     <a name="verduras"></a>
     <div class="row">
         <h2>Verduras/Legumes</h2>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="verduras/cenoura.jpg" alt="cenoura" width="100px" height="60px">
+        <?php
+            include("produtos.php");
+            for ($i = 0; $i <= 4; $i++):
+        ?>
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $verduras[$i]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $verduras[$i]["nome"];?> é R$<?php echo $verduras[$i]["preco"];?> <?php echo $verduras[$i]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                </form>
             </div>
-            O valor do cenoura é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="verduras/chuchu.png" alt="chuchu" width="100px" height="60px">
-            </div>
-            O valor do chuchu é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="verduras/pepino.png" alt="pepino" width="100px" height="60px">
-            </div>
-            O valor do pepino é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="verduras/quiabo.png" alt="quiabo" width="100px" height="60px">
-            </div>
-            O valor do quiabo é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="verduras/tomate.png" alt="tomate" width="100px" height="60px">
-            </div>
-            O valor do tomate é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
+        <?php
+            endfor;
+        ?>
+    </div>
 
     </div>
     <a name="folhas"></a>
     <div class="row">
         <h2>Folhagem</h2>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="folhagem/alface.png" alt="alface" width="100px" height="60px">
+        <?php
+            include("produtos.php");
+            for ($i = 0; $i <= 4; $i++):
+        ?>
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $folhas[$i]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $folhas[$i]["nome"];?> é R$<?php echo $folhas[$i]["preco"];?> <?php echo $folhas[$i]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="qtd_produto" min="0">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                </form>
             </div>
-            O valor do alface é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-        
-        <div class="col s5 produto">
-        <div>
-                <img src="folhagem/brocolis.png" alt="brocolis" width="100px" height="60px">
-            </div>
-            O valor do brócolis é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-        <div>
-                <img src="folhagem/cebolinho.jpg" alt="cebolinho" width="100px" height="60px">
-            </div>
-            O valor do cebolinho é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-        <div>
-                <img src="folhagem/espinafre.jpg" alt="espinafre" width="100px" height="60px">
-            </div>
-            O valor do espinafre é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-        <div>
-                <img src="folhagem/hortela.jpg" alt="hortela" width="100px" height="60px">
-            </div>
-            O valor do hortelã é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
+        <?php
+            endfor;
+        ?>
     </div>
+
     <a name="raizes"></a>
     <div class="row">
         <h2>Raizes/Tubérculos</h2>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="raizes/batata-doce.jpg" alt="batata_doce" width="100px" height="60px">
+        <?php
+            include("produtos.php");
+            for ($i = 0; $i <= 4; $i++):
+        ?>
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $raizes[$i]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $raizes[$i]["nome"];?> é R$<?php echo $raizes[$i]["preco"];?> <?php echo $raizes[$i]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="qtd_produto" min="0" step="0.5">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                        <i class="material-icons right">shopping_cart</i>
+                    </button>
+                </form>
             </div>
-            O valor do Batata-doce é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>        
-        </div>
-        
-        <div class="col s5 produto">
-            <div>
-                <img src="raizes/batata-inglesa.png" alt="batata_inglesa" width="100px" height="60px">
-            </div>
-            O valor do batata-inglêsa é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>        
-        </div>
-
-        <div class="col s5 produto">
-        <div>
-                <img src="raizes/macaxeira-descasca.jpg" alt="macaxeira_descascada" width="100px" height="60px">
-            </div>
-            O valor do macaxeira descascada é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>        
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="raizes/macaxeira.jpg" alt="macaxeira" width="100px" height="60px">
-            </div>
-            O valor do macaxeira é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
-        </div>
-
-        <div class="col s5 produto">
-            <div>
-                <img src="raizes/nabo.jpg" alt="nabo" width="100px" height="60px">
-            </div>
-            O valor do nabo é: R$ 1.50 und.
-            <br>
-            <form method="GET" action="carrinho.php">
-                Quantidade: <input type="number" name="qtd_produto">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                    <i class="material-icons right">shopping_cart</i>
-                </button>
-            </form>
+        <?php
+            endfor;
+        ?>
         </div>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>
