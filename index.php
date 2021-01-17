@@ -50,14 +50,16 @@
                 $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                 if (!$_SESSION['logado']):
             ?>
-                <a href="carrinho.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
                 <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
+                <a href="carrinho.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+                <a href="pedidos.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">reorder</i>Meus pedidos</a>
                 <a href="logout.php" class="waves-effect waves-light btn disabled"><i class="material-icons left">exit_to_app</i>Sair</a>
             <?php
                 else:
             ?>
-                <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
                 <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">send</i>Entrar</a>
+                <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
+                <a href="pedidos.php" class="waves-effect waves-light btn"><i class="material-icons left">reorder</i>Meus pedidos</a>
                 <a href="logout.php" class="waves-effect waves-light btn"><i class="material-icons left">exit_to_app</i>Sair</a>
             <?php
                 endif;
@@ -93,7 +95,7 @@
                     <img src="<?php echo $frutas[$i]["imagem"];?>" width="100px" height="60px">
                 </div>
                 <p>O valor do <?php echo $frutas[$i]["nome"];?> é R$<?php echo $frutas[$i]["preco"];?> <?php echo $frutas[$i]["tipo"];?></p>
-                <form method="GET" action="carrinho.php">
+                <form method="GET" action="index.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
@@ -130,7 +132,7 @@
                     <img src="<?php echo $verduras[$i]["imagem"];?>" width="100px" height="60px">
                 </div>
                 <p>O valor do <?php echo $verduras[$i]["nome"];?> é R$<?php echo $verduras[$i]["preco"];?> <?php echo $verduras[$i]["tipo"];?></p>
-                <form method="GET" action="carrinho.php">
+                <form method="GET" action="index.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
@@ -168,7 +170,7 @@
                     <img src="<?php echo $folhas[$i]["imagem"];?>" width="100px" height="60px">
                 </div>
                 <p>O valor do <?php echo $folhas[$i]["nome"];?> é R$<?php echo $folhas[$i]["preco"];?> <?php echo $folhas[$i]["tipo"];?></p>
-                <form method="GET" action="carrinho.php">
+                <form method="GET" action="index.php">
                     Quantidade: <input type="number" name="qtd_produto" min="0">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
@@ -205,7 +207,8 @@
                     <img src="<?php echo $raizes[$i]["imagem"];?>" width="100px" height="60px">
                 </div>
                 <p>O valor do <?php echo $raizes[$i]["nome"];?> é R$<?php echo $raizes[$i]["preco"];?> <?php echo $raizes[$i]["tipo"];?></p>
-                <form method="GET" action="carrinho.php">
+                <form method="GET" action="index.php">
+                    <!--Utilizar o nome das frutas como nome-->
                     Quantidade: <input type="number" name="qtd_produto" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;

@@ -1,10 +1,3 @@
-<?php
-include('produtos.php');
-
-if (isset($_POST["btn-finalizar"])):
-    header('Location: pedidos.php');
-endif;
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -45,7 +38,6 @@ endif;
             width: 100%;
         }
     </style>
-
 </head>
 <body>
     <div class="card-panel teal lighten-2">
@@ -62,35 +54,8 @@ endif;
         </header>        
     </div>
     <div class="barra">
-        <strong>Meu carrinho</strong>
+        <strong>Meus pedidos</strong>
     </div>
-    <div>
-      <form method="POST">
-            <table>
-                <thead>
-                <tr>
-                    <th>ID do produto</th>
-                    <th>Nome do produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                </tr>
-                </thead>
-
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-            </table>
-            </div>
-            <div>
-                <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
-                    <i class="material-icons right">favorite_border</i>
-                </button>
-            </div>
-        </form>
+    
 </body>
 </html>
