@@ -12,12 +12,18 @@ if (isset($_POST["btn-cadastrar"])):
     if(empty($nome) or empty($email) or empty($senha)):
         $erros[] = "<div>Erro no cadastro - Algum campo deve estar vazio.</div>";
     else:
-        $senha = md5($senha);
-        $sql = "INSERT INTO cliente (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
-        if(mysqli_query($connect, $sql)):
-            header('Location: login.php');
+        $sql = "SELECT email FROM cliente WHERE email = '$email'";
+        $resultado = mysqli_query($connect, $sql);
+        if (mysqli_num_rows($resultado) >= 1):
+            $erros[] = "<div>Erro no cadastro - Esse email já está cadastrado.</div>";
         else:
-            header('Location: cadastro.php');
+            $senha = md5($senha);
+            $sql = "INSERT INTO cliente (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
+            if(mysqli_query($connect, $sql)):
+                header('Location: login.php');
+            else:
+                header('Location: cadastro.php');
+            endif;
         endif;
     endif;
 endif;

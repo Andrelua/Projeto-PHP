@@ -1,9 +1,8 @@
 <?php
-include('produtos.php');
-
 if (isset($_POST["btn-finalizar"])):
     header('Location: pedidos.php');
 endif;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -65,27 +64,10 @@ endif;
         <strong>Meu carrinho</strong>
     </div>
     <div>
-      <form method="POST">
-            <table>
-                <thead>
-                <tr>
-                    <th>ID do produto</th>
-                    <th>Nome do produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                </tr>
-                </thead>
+        <form method="POST">
+            
+            
 
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-            </table>
-            </div>
             <div>
                 <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
                     <i class="material-icons right">favorite_border</i>
