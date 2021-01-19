@@ -9,6 +9,7 @@ if (isset($_POST["btn-cadastrar"])):
     $nome = mysqli_escape_string($connect, $_POST['nome']);
     $email = mysqli_escape_string($connect, $_POST['email_cadastro']);
     $senha = mysqli_escape_string($connect, $_POST['senha_cadastro']);
+    
     if(empty($nome) or empty($email) or empty($senha)):
         $erros[] = "<div>Erro no cadastro - Algum campo deve estar vazio.</div>";
     else:

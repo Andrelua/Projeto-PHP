@@ -64,10 +64,11 @@ endif;
         <strong>Meu carrinho</strong>
     </div>
     <div>
-        <form method="POST">
-            
-            
-
+        <form method="POST">    
+            <div>
+               <?php
+               ?>
+            </div>
             <div>
                 <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
                     <i class="material-icons right">favorite_border</i>

@@ -88,36 +88,138 @@
         <h2>Frutas</h2>
         <?php
             include("produtos.php");
-            for ($i = 0; $i <= 4; $i++):
         ?>
             <div class="col s5 produto">
                 <div>
-                    <img src="<?php echo $frutas[$i]["imagem"];?>" width="100px" height="60px">
+                    <img src="<?php echo $frutas[0]["imagem"];?>" width="100px" height="60px">
                 </div>
-                <p>O valor do <?php echo $frutas[$i]["nome"];?> é R$<?php echo $frutas[$i]["preco"];?> <?php echo $frutas[$i]["tipo"];?></p>
-                <form method="GET">
-                    Quantidade: <input type="number" name="<?php echo $frutas[$i]["nome"];?>" min="0">
+                <p>O valor do <?php echo $frutas[0]["nome"];?> é R$<?php echo $frutas[0]["preco"];?> <?php echo $frutas[0]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="101" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
                     ?>
-                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
                         <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        </button>
                     <?php
                         else:
                     ?>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
-                        endif;
-                    ?> 
+                        endif; 
+                    ?>
                 </form>
             </div>
-        <?php
-            endfor;
-        ?>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $frutas[1]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $frutas[1]["nome"];?> é R$<?php echo $frutas[1]["preco"];?> <?php echo $frutas[1]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="102" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif; 
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $frutas[2]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $frutas[2]["nome"];?> é R$<?php echo $frutas[2]["preco"];?> <?php echo $frutas[2]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="103" value="0" min="0"
+            step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif; 
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $frutas[3]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $frutas[3]["nome"];?> é R$<?php echo $frutas[3]["preco"];?> <?php echo $frutas[3]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="104" value="0" min="0"
+            step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif; 
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $frutas[4]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $frutas[4]["nome"];?> é R$<?php echo $frutas[4]["preco"];?> <?php echo $frutas[4]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="105" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif; 
+                    ?>
+                </form>
+            </div>
     </div>
 
     <a name="verduras"></a>
@@ -125,36 +227,136 @@
         <h2>Verduras/Legumes</h2>
         <?php
             include("produtos.php");
-            for ($i = 0; $i <= 4; $i++):
         ?>
             <div class="col s5 produto">
                 <div>
-                    <img src="<?php echo $verduras[$i]["imagem"];?>" width="100px" height="60px">
+                    <img src="<?php echo $verduras[0]["imagem"];?>" width="100px" height="60px">
                 </div>
-                <p>O valor do <?php echo $verduras[$i]["nome"];?> é R$<?php echo $verduras[$i]["preco"];?> <?php echo $verduras[$i]["tipo"];?></p>
-                <form method="GET">
-                    Quantidade: <input type="number" name="<?php echo $verduras[$i]["nome"];?>" min="0">
+                <p>O valor do <?php echo $verduras[0]["nome"];?> é R$<?php echo $verduras[0]["preco"];?> <?php echo $verduras[0]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="106" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
                     ?>
-                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         else:
                     ?>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         endif;
                     ?>
                 </form>
             </div>
-        <?php
-            endfor;
-        ?>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $verduras[1]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $verduras[1]["nome"];?> é R$<?php echo $verduras[1]["preco"];?> <?php echo $verduras[1]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="107" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $verduras[2]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $verduras[2]["nome"];?> é R$<?php echo $verduras[2]["preco"];?> <?php echo $verduras[2]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="108" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $verduras[3]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $verduras[3]["nome"];?> é R$<?php echo $verduras[3]["preco"];?> <?php echo $verduras[3]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="109" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $verduras[4]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $verduras[4]["nome"];?> é R$<?php echo $verduras[4]["preco"];?> <?php echo $verduras[4]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="110" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
     </div>
 
     </div>
@@ -163,36 +365,136 @@
         <h2>Folhagem</h2>
         <?php
             include("produtos.php");
-            for ($i = 0; $i <= 4; $i++):
         ?>
             <div class="col s5 produto">
                 <div>
-                    <img src="<?php echo $folhas[$i]["imagem"];?>" width="100px" height="60px">
+                    <img src="<?php echo $folhas[0]["imagem"];?>" width="100px" height="60px">
                 </div>
-                <p>O valor do <?php echo $folhas[$i]["nome"];?> é R$<?php echo $folhas[$i]["preco"];?> <?php echo $folhas[$i]["tipo"];?></p>
-                <form method="GET" action="index.php">
-                    Quantidade: <input type="number" name="<?php echo $folhas[$i]["nome"];?>" min="0">
+                <p>O valor do <?php echo $folhas[0]["nome"];?> é R$<?php echo $folhas[0]["preco"];?> <?php echo $folhas[0]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="111" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
                     ?>
-                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         else:
                     ?>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         endif;
                     ?>
                 </form>
             </div>
-        <?php
-            endfor;
-        ?>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $folhas[1]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $folhas[1]["nome"];?> é R$<?php echo $folhas[1]["preco"];?> <?php echo $folhas[1]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="112" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $folhas[2]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $folhas[2]["nome"];?> é R$<?php echo $folhas[2]["preco"];?> <?php echo $folhas[2]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="113" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $folhas[3]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $folhas[3]["nome"];?> é R$<?php echo $folhas[3]["preco"];?> <?php echo $folhas[3]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="114" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $folhas[4]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $folhas[4]["nome"];?> é R$<?php echo $folhas[4]["preco"];?> <?php echo $folhas[4]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="115" value="0" min="0" step="1">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Add ao carrinho <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
     </div>
 
     <a name="raizes"></a>
@@ -200,37 +502,136 @@
         <h2>Raizes/Tubérculos</h2>
         <?php
             include("produtos.php");
-            for ($i = 0; $i <= 4; $i++):
         ?>
             <div class="col s5 produto">
                 <div>
-                    <img src="<?php echo $raizes[$i]["imagem"];?>" width="100px" height="60px">
+                    <img src="<?php echo $raizes[0]["imagem"];?>" width="100px" height="60px">
                 </div>
-                <p>O valor do <?php echo $raizes[$i]["nome"];?> é R$<?php echo $raizes[$i]["preco"];?> <?php echo $raizes[$i]["tipo"];?></p>
-                <form method="GET">
-                    <!--Utilizar o nome das frutas como nome-->
-                    Quantidade: <input type="number" name="<?php echo $raizes[$i]["nome"];?>" min="0" step="0.5">
+                <p>O valor do <?php echo $raizes[0]["nome"];?> é R$<?php echo $raizes[0]["preco"];?> <?php echo $raizes[0]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="116" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
                     ?>
-                    <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         else:
                     ?>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
-                        <i class="material-icons right">shopping_cart</i>
-                    </button>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
                     <?php
                         endif;
                     ?>
                 </form>
             </div>
-        <?php
-            endfor;
-        ?>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $raizes[1]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $raizes[1]["nome"];?> é R$<?php echo $raizes[1]["preco"];?> <?php echo $raizes[1]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="117" value="0" min="0" step="0.5">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $raizes[2]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $raizes[2]["nome"];?> é R$<?php echo $raizes[2]["preco"];?> <?php echo $raizes[2]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="118" value="0" min="0" step="0.5">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $raizes[3]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $raizes[3]["nome"];?> é R$<?php echo $raizes[3]["preco"];?> <?php echo $raizes[3]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="119" value="0" min="0" step="0.5">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
+
+            <div class="col s5 produto">
+                <div>
+                    <img src="<?php echo $raizes[4]["imagem"];?>" width="100px" height="60px">
+                </div>
+                <p>O valor do <?php echo $raizes[4]["nome"];?> é R$<?php echo $raizes[4]["preco"];?> <?php echo $raizes[4]["tipo"];?></p>
+                <form method="GET" action="carrinho.php">
+                    Quantidade: <input type="number" name="120" value="0" min="0" step="0.5">
+                    <?php
+                        $_SESSION['logado'] = $_SESSION['logado'] ?? False;
+                        if (!$_SESSION['logado']):
+                    ?>
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        else:
+                    ?>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Add ao carrinho
+                            <i class="material-icons right">shopping_cart</i>
+                        </button>
+                    <?php
+                        endif;
+                    ?>
+                </form>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>
