@@ -24,8 +24,24 @@ if (isset($_POST["btn-login"])):
             if(mysqli_num_rows($resultado) == 1):
                 $dados = mysqli_fetch_array($resultado);
                 $_SESSION['logado'] = True;
-                $_SESSION['id_usuario'] = $dados['id'];
-                header('Location: index.php');
+                $id_usuario = $dados['id'];
+                
+                $id = 1;
+                $sql = "SELECT * FROM pedidos WHERE numero_pedido = 1";
+                $resultado = mysqli_query($connect, $sql);
+
+                if(mysqli_num_rows($resultado) == 0):
+                    $sql = "INSERT INTO pedidos (numero_pedido, id_cliente) VALUES ('$id', '$id_usuario')";
+                    if(mysqli_query($connect, $sql)):
+                        header('Location: index.php');
+                    endif;
+                else:
+                    $id += 1;
+                    $sql = "INSERT INTO pedidos (numero_pedido, id_cliente) VALUES ('$id', '$id_usuario')";
+                    if(mysqli_query($connect, $sql)):
+                        header('Location: index.php');
+                    endif;
+                endif;
             else:
                 $erros[] = "<div>Erro no login - Usuário e senha não conferem.</div>";
             endif;
