@@ -2,6 +2,9 @@
 //BANCO DE DADOS
 require_once 'db_connect.php';
 
+//SESSÃO
+session_start();
+
 if (isset($_POST["btn-finalizar"])):
     header('Location: pedidos.php');
 endif;
@@ -70,10 +73,39 @@ endif;
         <form method="POST">    
             <div>
                <?php
-               $sql = "SELECT * FROM produto WHERE numero_pedido = 10";
-               $resultado = mysqli_query($connect, $sql);
-               echo "$resultado <br>";
+                    $id = $_SESSION['id_pedido'];
+                    $consulta = "SELECT * FROM produto WHERE id_pedido = '$id'";
+                    $resultado = mysqli_query($connect, $consulta);
                ?>
+               <div>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome do produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php 
+                        while($dados=mysqli_fetch_array($resultado)){
+                        ?>
+                            <tr>
+                                <td><?php echo $dados["id_produto"];?></td>
+                                <td><?php echo $dados["nome_produto"];?></td>
+                                <td><?php echo $dados["preco_produto"];?></td>
+                                <td><?php echo $dados["qtd_produto"];?></td>
+                                <td><a class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
+                                <td><a class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
+                            </tr>
+                        <?php 
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+               </div>
             </div>
             <div>
                 <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
