@@ -1,4 +1,7 @@
 <?php
+//BANCO DE DADOS
+require_once 'db_connect.php';
+
 if (isset($_POST["btn-finalizar"])):
     header('Location: pedidos.php');
 endif;
@@ -67,6 +70,9 @@ endif;
         <form method="POST">    
             <div>
                <?php
+               $sql = "SELECT * FROM produto WHERE numero_pedido = 10";
+               $resultado = mysqli_query($connect, $sql);
+               echo "$resultado <br>";
                ?>
             </div>
             <div>

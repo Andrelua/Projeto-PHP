@@ -94,7 +94,7 @@
                     <img src="<?php echo $frutas[0]["imagem"];?>" width="100px" height="60px">
                 </div>
                 <p>O valor do <?php echo $frutas[0]["nome"];?> é R$<?php echo $frutas[0]["preco"];?> <?php echo $frutas[0]["tipo"];?></p>
-                <form method="GET" action="carrinho.php">
+                <form method="GET" action="add_carrinho.php">
                     Quantidade: <input type="number" name="101" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
