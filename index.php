@@ -203,7 +203,7 @@
                 </div>
                 <p>O valor do <?php echo $frutas[4]["nome"];?> é R$<?php echo $frutas[4]["preco"];?> <?php echo $frutas[4]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="105" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="110" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -236,7 +236,7 @@
                 </div>
                 <p>O valor do <?php echo $verduras[0]["nome"];?> é R$<?php echo $verduras[0]["preco"];?> <?php echo $verduras[0]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="106" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="116" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -262,7 +262,7 @@
                 </div>
                 <p>O valor do <?php echo $verduras[1]["nome"];?> é R$<?php echo $verduras[1]["preco"];?> <?php echo $verduras[1]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="107" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="117" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -288,7 +288,7 @@
                 </div>
                 <p>O valor do <?php echo $verduras[2]["nome"];?> é R$<?php echo $verduras[2]["preco"];?> <?php echo $verduras[2]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="108" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="118" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -314,7 +314,7 @@
                 </div>
                 <p>O valor do <?php echo $verduras[3]["nome"];?> é R$<?php echo $verduras[3]["preco"];?> <?php echo $verduras[3]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="109" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="119" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -340,7 +340,7 @@
                 </div>
                 <p>O valor do <?php echo $verduras[4]["nome"];?> é R$<?php echo $verduras[4]["preco"];?> <?php echo $verduras[4]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="110" value="0" min="0" step="1">
+                    Quantidade: <input type="number" name="120" value="0" min="0" step="1">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -511,7 +511,7 @@
                 </div>
                 <p>O valor do <?php echo $raizes[0]["nome"];?> é R$<?php echo $raizes[0]["preco"];?> <?php echo $raizes[0]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="116" value="0" min="0" step="0.5">
+                    Quantidade: <input type="number" name="111" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -537,7 +537,7 @@
                 </div>
                 <p>O valor do <?php echo $raizes[1]["nome"];?> é R$<?php echo $raizes[1]["preco"];?> <?php echo $raizes[1]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="117" value="0" min="0" step="0.5">
+                    Quantidade: <input type="number" name="112" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -563,7 +563,7 @@
                 </div>
                 <p>O valor do <?php echo $raizes[2]["nome"];?> é R$<?php echo $raizes[2]["preco"];?> <?php echo $raizes[2]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="118" value="0" min="0" step="0.5">
+                    Quantidade: <input type="number" name="113" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -589,7 +589,7 @@
                 </div>
                 <p>O valor do <?php echo $raizes[3]["nome"];?> é R$<?php echo $raizes[3]["preco"];?> <?php echo $raizes[3]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="119" value="0" min="0" step="0.5">
+                    Quantidade: <input type="number" name="114" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):
@@ -615,7 +615,7 @@
                 </div>
                 <p>O valor do <?php echo $raizes[4]["nome"];?> é R$<?php echo $raizes[4]["preco"];?> <?php echo $raizes[4]["tipo"];?></p>
                 <form method="GET" action="add_carrinho.php">
-                    Quantidade: <input type="number" name="120" value="0" min="0" step="0.5">
+                    Quantidade: <input type="number" name="115" value="0" min="0" step="0.5">
                     <?php
                         $_SESSION['logado'] = $_SESSION['logado'] ?? False;
                         if (!$_SESSION['logado']):

@@ -1,3 +1,9 @@
+<?php
+//BANCO DE DADOS
+require_once 'db_connect.php';
+//SESSÃO
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,6 +44,7 @@
             width: 100%;
         }
     </style>
+    
 </head>
 <body>
     <div class="card-panel teal lighten-2">

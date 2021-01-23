@@ -41,7 +41,7 @@ if (isset($_POST["btn-login"])):
                         header('Location: index.php');
                     endif;
                 else:
-                    $id += 1;
+                    $id += rand(2, 999999);
                     $sql = "INSERT INTO pedidos (numero_pedido, id_cliente) VALUES ('$id', '$id_usuario')";
                     $resultado2 = mysqli_query($connect, $sql);
                     $consulta = "SELECT * FROM pedidos WHERE numero_pedido = '$id' AND id_cliente = $id_usuario";
