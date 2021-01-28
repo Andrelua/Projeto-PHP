@@ -4,9 +4,6 @@ require_once 'db_connect.php';
 //SESSÃO
 session_start();
 
-
-/*Criar tabela, pesquisa, com os seguintes campos: id_pesquisa, nome_pesquisa, imagem_pesquisa, preco_pesquisa, tipo_pesquisa*/
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
