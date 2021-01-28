@@ -82,7 +82,7 @@ endif;
                         <thead>
                             <tr>
                                 <th style="text-align: center;">Quantidade</th>
-                                <th style="text-align: center;">Valor unitário</th>
+                                <th style="text-align: center;">Valor</th>
                                 <th style="text-align: center;">Nome do produto</th>
                             </tr>
                         </thead>
@@ -97,7 +97,7 @@ endif;
                                 <td style="text-align: center;"><?php echo $dados["preco_produto"];?></td>
                                 <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
                                 <td><a href="delete.php?del=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
-                                <td><a href="" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
+                                <td><a href="edicao.php?edt=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
                             </tr>
                         <?php 
                             $valortot += $dados["preco_produto"];
