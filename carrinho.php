@@ -88,7 +88,7 @@ endif;
                         </thead>
 
                         <tbody>
-                        <?php 
+                        <?php
                         $valortot = 0;
                         while($dados=mysqli_fetch_array($resultado)){
                         ?>
@@ -96,8 +96,8 @@ endif;
                                 <td style="text-align: center;"><?php echo $dados["qtd_produto"];?></td>
                                 <td style="text-align: center;"><?php echo $dados["preco_produto"];?></td>
                                 <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
-                                <td><a class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
-                                <td><a class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
+                                <td><a href="delete.php?del=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
+                                <td><a href="" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
                             </tr>
                         <?php 
                             $valortot += $dados["preco_produto"];
@@ -115,7 +115,7 @@ endif;
                     </button>
                 </div>
                 <div class="card-panel teal lighten-2" style="width: 20%; float: inline-start; text-align: center;">
-                    <?php echo "O VALOR TOTAL A PAGAR É: <strong>R$$valortot</strong>";?>       
+                    <?php echo "O VALOR TOTAL A PAGAR É: <strong>R$ $valortot</strong>";?>       
                 </div>
             </div>
         </form>
