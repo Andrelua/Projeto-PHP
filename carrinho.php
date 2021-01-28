@@ -81,37 +81,44 @@ endif;
                     <table class="striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Nome do produto</th>
-                                <th>Preço</th>
-                                <th>Quantidade</th>
+                                <th style="text-align: center;">Quantidade</th>
+                                <th style="text-align: center;">Valor unitário</th>
+                                <th style="text-align: center;">Nome do produto</th>
                             </tr>
                         </thead>
 
                         <tbody>
                         <?php 
+                        $valortot = 0;
                         while($dados=mysqli_fetch_array($resultado)){
                         ?>
                             <tr>
-                                <td><?php echo $dados["id_produto"];?></td>
-                                <td><?php echo $dados["nome_produto"];?></td>
-                                <td><?php echo $dados["preco_produto"];?></td>
-                                <td><?php echo $dados["qtd_produto"];?></td>
+                                <td style="text-align: center;"><?php echo $dados["qtd_produto"];?></td>
+                                <td style="text-align: center;"><?php echo $dados["preco_produto"];?></td>
+                                <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
                                 <td><a class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
                                 <td><a class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
                             </tr>
                         <?php 
+                            $valortot += $dados["preco_produto"];
                             }
                         ?>
                         </tbody>
                     </table>
                </div>
             </div>
-            <div>
-                <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
-                    <i class="material-icons right">favorite_border</i>
-                </button>
+            
+            <div style="width: 100%; font-family: 'Roboto', sans-serif;">
+                <div style="width: 22%; float: left;">        
+                    <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
+                        <i class="material-icons right">favorite_border</i>
+                    </button>
+                </div>
+                <div class="card-panel teal lighten-2" style="width: 20%; float: inline-start; text-align: center;">
+                    <?php echo "O VALOR TOTAL A PAGAR É: <strong>R$$valortot</strong>";?>       
+                </div>
             </div>
         </form>
+        
 </body>
 </html>
