@@ -97,33 +97,5 @@ session_start();
             ?>
         </div>
     </div>
-    <div>
-        <?php
-            $id = $_SESSION['id_cliente'];
-            $consulta = "SELECT * FROM pedidos WHERE id_cliente = '$id'";
-            $resultado = mysqli_query($connect, $consulta);
-        ?>
-        <div>
-            <h3>Pedidos não finalizados</h3>
-            <?php
-                while($dados2=mysqli_fetch_array($resultado)){
-            ?>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                            <span class="card-title">#<?php echo $dados2["numero_pedido"];?></span>
-                            </div>
-                            <div class="card-action">
-                            <a href="meusprodutos2.php?pdd2=<?php echo $dados2["id_pedido"];?>">Ver produtos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
-                }
-            ?>
-        </div>
-    </div>
 </body>
 </html>
