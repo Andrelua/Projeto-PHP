@@ -65,10 +65,11 @@ session_start();
     </div>
     <div>
         <?php
+            $id = $_SESSION['id_cliente'];
             $consulta = "SELECT E.nome_cliente, E.endereco, E.forma_pag, E.data_envio, P.id_pedido, P.numero_pedido 
                         FROM envio AS E
                         INNER JOIN pedido_fz AS P
-                        ON E.id_pedido = P.id_pedido";
+                        WHERE E.id_pedido = P.id_pedido AND E.id_cliente = '$id'";
             $resultado = mysqli_query($connect, $consulta);
         ?>
         <div>
