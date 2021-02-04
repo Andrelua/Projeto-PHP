@@ -24,9 +24,10 @@ if (isset($_POST["btn-login"])):
             if(mysqli_num_rows($resultado) == 1):
                 $dados = mysqli_fetch_array($resultado);
                 $_SESSION['logado'] = True;
+                $_SESSION['id_cliente'] = $dados['id'];
                 $id_usuario = $dados['id'];
                 
-                $id = 1;
+                $id += rand(2, 999999);
                 $sql = "SELECT * FROM pedidos WHERE numero_pedido = 1";
                 $resultado = mysqli_query($connect, $sql);
 
@@ -37,17 +38,6 @@ if (isset($_POST["btn-login"])):
                     $result_1 = mysqli_query($connect, $consulta);
                     $dados_pedidos = mysqli_fetch_array($result_1);
                     if($resultado1):
-                        $_SESSION['id_pedido'] = $dados_pedidos['id_pedido'];
-                        header('Location: index.php');
-                    endif;
-                else:
-                    $id += rand(2, 999999);
-                    $sql = "INSERT INTO pedidos (numero_pedido, id_cliente) VALUES ('$id', '$id_usuario')";
-                    $resultado2 = mysqli_query($connect, $sql);
-                    $consulta = "SELECT * FROM pedidos WHERE numero_pedido = '$id' AND id_cliente = $id_usuario";
-                    $result_2 = mysqli_query($connect, $consulta);
-                    $dados_pedidos = mysqli_fetch_array($result_2);
-                    if($resultado2):
                         $_SESSION['id_pedido'] = $dados_pedidos['id_pedido'];
                         header('Location: index.php');
                     endif;

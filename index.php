@@ -66,7 +66,7 @@
                 <a href="carrinho.php" class="waves-effect waves-light btn"><i class="material-icons left">shopping_cart</i>Meu carrinho</a>
                 <a href="pedidos.php" class="waves-effect waves-light btn"><i class="material-icons left">reorder</i>Meus pedidos</a>
                 <a href="logout.php" class="waves-effect waves-light btn"><i class="material-icons left">exit_to_app</i>Sair</a>
-
+                
                 <form method="POST" class='search'action="search.php">
                     <input type="search" id=busca name="pesquisar" placeholder="Buscar produto...">
                     <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar" title="buscar"><i class="material-icons left">search</i></button>

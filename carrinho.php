@@ -1,12 +1,11 @@
 <?php
 //BANCO DE DADOS
 require_once 'db_connect.php';
-
 //SESSÃO
 session_start();
 
 if (isset($_POST["btn-finalizar"])):
-    header('Location: pedidos.php');
+    header('Location: fnz_pdd.php');
 endif;
 
 ?>
@@ -60,7 +59,7 @@ endif;
             </h1>
             <a href="index.php" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a>
 
-            <form method="POST" class='search'>
+            <form method="POST" class='search'action="search.php">
                 <input type="search" id=busca name="pesquisar" placeholder="Buscar produto...">
                 <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar" title="buscar"><i class="material-icons left">search</i></button>
             </form>
@@ -94,7 +93,7 @@ endif;
                         ?>
                             <tr>
                                 <td style="text-align: center;"><?php echo $dados["qtd_produto"];?></td>
-                                <td style="text-align: center;"><?php echo $dados["preco_produto"];?></td>
+                                <td style="text-align: center;">R$<?php echo $dados["preco_produto"];?></td>
                                 <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
                                 <td><a href="delete.php?del=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
                                 <td><a href="edicao.php?edt=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>

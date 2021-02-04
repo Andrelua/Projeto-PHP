@@ -81,7 +81,6 @@ endif;
             
             <a href="login.php" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_tab</i>Login</a>
             <a href="index.php" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a>
-        
         </header>        
     </div>
     <div class="barra">

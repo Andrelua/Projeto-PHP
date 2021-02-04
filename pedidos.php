@@ -54,7 +54,7 @@ session_start();
             </h1>
             <a href="index.php" class="waves-effect waves-light btn"><i class="material-icons left">home</i>Home</a>
 
-            <form method="POST" class='search'>
+            <form method="POST" class='search'action="search.php">
                 <input type="search" id=busca name="pesquisar" placeholder="Buscar produto...">
                 <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar" title="buscar"><i class="material-icons left">search</i></button>
             </form>
@@ -63,6 +63,69 @@ session_start();
     <div class="barra">
         <strong>Meus pedidos</strong>
     </div>
-    
+    <div>
+        <?php
+            $consulta = "SELECT E.nome_cliente, E.endereco, E.forma_pag, E.data_envio, P.id_pedido, P.numero_pedido 
+                        FROM envio AS E
+                        INNER JOIN pedido_fz AS P
+                        ON E.id_cliente = P.id_cliente";
+            $resultado = mysqli_query($connect, $consulta);
+        ?>
+        <div>
+            <h3>Pedidos finalizados</h3>
+            <?php
+            while($dados=mysqli_fetch_array($resultado)){
+            ?>
+                <div class="row">
+                    <div class="col s12 m6">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                        <span class="card-title">#<?php echo $dados["numero_pedido"];?></span>
+                        <p>Nome do cliente: <?php echo $dados["nome_cliente"];?></p>
+                        <p>Endereço: <?php echo $dados["endereco"];?></p>
+                        <p>Data da compra: <?php echo $dados["data_envio"];?></p>
+                        <p>Forma de pagamento: <?php echo $dados["forma_pag"];?></p>
+                        </div>
+                        <div class="card-action">
+                        <a href="meusprodutos.php?pdd=<?php echo $dados["id_pedido"];?>">Ver produtos</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <?php
+                }
+            ?>
+        </div>
+    </div>
+    <div>
+        <?php
+            $consulta = "SELECT E.nome_cliente, E.endereco, E.forma_pag, E.data_envio, PE.id_pedido, PE.numero_pedido 
+                        FROM envio AS E
+                        INNER JOIN pedidos AS PE
+                        ON E.id_cliente = PE.id_cliente";
+            $resultado = mysqli_query($connect, $consulta);
+        ?>
+        <div>
+            <h3>Pedidos não finalizados</h3>
+            <?php
+                while($dados2=mysqli_fetch_array($resultado)){
+            ?>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                            <span class="card-title">#<?php echo $dados2["numero_pedido"];?></span>
+                            </div>
+                            <div class="card-action">
+                            <a href="meusprodutos2.php?pdd2=<?php echo $dados2["id_pedido"];?>">Ver produtos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+                }
+            ?>
+        </div>
+    </div>
 </body>
 </html>

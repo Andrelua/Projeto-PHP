@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 26-Jan-2021 às 23:56
+-- Host: localhost
+-- Tempo de geração: 03/02/2021 às 23:46
 -- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 8.0.0
+-- Versão do PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -35,7 +35,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `email`, `senha`) VALUES
@@ -44,7 +44,30 @@ INSERT INTO `cliente` (`id`, `nome`, `email`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pedidos`
+-- Estrutura para tabela `envio`
+--
+
+CREATE TABLE `envio` (
+  `id_envio` int(11) NOT NULL,
+  `nome_cliente` varchar(255) NOT NULL,
+  `endereco` varchar(255) NOT NULL,
+  `forma_pag` varchar(255) NOT NULL,
+  `data_envio` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `envio`
+--
+
+INSERT INTO `envio` (`id_envio`, `nome_cliente`, `endereco`, `forma_pag`, `data_envio`) VALUES
+(7, 'Andrea Luiza', 'Ruablablabla', 'Crédito', '2021-02-03 19:12:36.000000'),
+(8, 'adsda', 'Ruablablabla', 'Crédito', '2021-02-03 19:34:49.000000'),
+(9, 'adsda', 'Ruablablabla', 'Débito', '2021-02-03 19:44:15.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pedidos`
 --
 
 CREATE TABLE `pedidos` (
@@ -54,20 +77,42 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pedidos`
+-- Despejando dados para a tabela `pedidos`
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `numero_pedido`, `id_cliente`) VALUES
-(36, 1, 1),
-(37, 68870, 1),
-(38, 768383, 1),
-(39, 16861, 1),
-(40, 532847, 1);
+(50, 37872, 1),
+(51, 21203, 1),
+(52, 116677, 1),
+(54, 764098, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pesquisa`
+-- Estrutura para tabela `pedido_fz`
+--
+
+CREATE TABLE `pedido_fz` (
+  `id_pedido` int(11) NOT NULL,
+  `numero_pedido` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `pedido_fz`
+--
+
+INSERT INTO `pedido_fz` (`id_pedido`, `numero_pedido`, `id_cliente`) VALUES
+(47, 1, 1),
+(49, 402097, 1),
+(50, 37872, 1),
+(51, 21203, 1),
+(53, 171952, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pesquisa`
 --
 
 CREATE TABLE `pesquisa` (
@@ -79,7 +124,7 @@ CREATE TABLE `pesquisa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `pesquisa`
+-- Despejando dados para a tabela `pesquisa`
 --
 
 INSERT INTO `pesquisa` (`id_pesquisa`, `nome_pesquisa`, `imagem_pesquisa`, `preco_pesquisa`, `tipo_pesquisa`) VALUES
@@ -107,7 +152,7 @@ INSERT INTO `pesquisa` (`id_pesquisa`, `nome_pesquisa`, `imagem_pesquisa`, `prec
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Estrutura para tabela `produto`
 --
 
 CREATE TABLE `produto` (
@@ -119,46 +164,83 @@ CREATE TABLE `produto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `produto`
+-- Despejando dados para a tabela `produto`
 --
 
 INSERT INTO `produto` (`id_produto`, `nome_produto`, `preco_produto`, `qtd_produto`, `id_pedido`) VALUES
-(48, 'Alface', 11.92, 8, 36),
-(49, 'Macaxeira', 19.95, 5, 36),
-(50, 'Hortelã', 5.96, 4, 37),
-(51, 'Cenoura', 1.635, 2, 37),
-(52, 'Cenoura', 3.27, 3, 37),
-(53, 'Batata-doce', 2.99, 1, 37),
-(54, 'Banana', 0, 0, 39),
-(55, 'Banana', 4.95, 5, 40),
-(56, 'Batata-doce', 20.93, 7, 40);
+(72, 'Abacate', 5.96, 4, 50),
+(73, 'Abacate', 4.47, 3, 51);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produto_fz`
+--
+
+CREATE TABLE `produto_fz` (
+  `id_produto` int(11) NOT NULL,
+  `nome_produto` varchar(255) NOT NULL,
+  `preco_produto` float NOT NULL,
+  `qtd_produto` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `produto_fz`
+--
+
+INSERT INTO `produto_fz` (`id_produto`, `nome_produto`, `preco_produto`, `qtd_produto`, `id_pedido`) VALUES
+(74, 'Abacate', 4.47, 3, 53),
+(75, 'Banana', 2.97, 3, 53),
+(76, 'Maçã', 1.47, 3, 53);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `pedidos`
+-- Índices de tabela `envio`
+--
+ALTER TABLE `envio`
+  ADD PRIMARY KEY (`id_envio`);
+
+--
+-- Índices de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `fk_cliente_pedido` (`id_cliente`);
 
 --
--- Índices para tabela `produto`
+-- Índices de tabela `pedido_fz`
+--
+ALTER TABLE `pedido_fz`
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_cliente_2` (`id_cliente`);
+
+--
+-- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`id_produto`),
   ADD KEY `fk_pedido_produto` (`id_pedido`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- Índices de tabela `produto_fz`
+--
+ALTER TABLE `produto_fz`
+  ADD PRIMARY KEY (`id_produto`),
+  ADD KEY `fk_pedidofz_produtofz` (`id_pedido`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -168,32 +250,56 @@ ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `envio`
+--
+ALTER TABLE `envio`
+  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
--- Restrições para despejos de tabelas
+-- AUTO_INCREMENT de tabela `produto_fz`
+--
+ALTER TABLE `produto_fz`
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+
+--
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `pedidos`
+-- Restrições para tabelas `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD CONSTRAINT `fk_cliente_pedido` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`);
 
 --
--- Limitadores para a tabela `produto`
+-- Restrições para tabelas `pedido_fz`
+--
+ALTER TABLE `pedido_fz`
+  ADD CONSTRAINT `fk_pedidofz_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`);
+
+--
+-- Restrições para tabelas `produto`
 --
 ALTER TABLE `produto`
   ADD CONSTRAINT `fk_pedido_produto` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`);
+
+--
+-- Restrições para tabelas `produto_fz`
+--
+ALTER TABLE `produto_fz`
+  ADD CONSTRAINT `fk_pedidofz_produtofz` FOREIGN KEY (`id_pedido`) REFERENCES `pedido_fz` (`id_pedido`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
