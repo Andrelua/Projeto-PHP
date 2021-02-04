@@ -14,7 +14,8 @@ if (isset($_POST["btn-dados"])):
         $erros[] = "<div class='alerta'>Erro no Envio - Algum campo deve estar vazio.</div>";
     else:
         $id_cliente = $_SESSION['id_cliente'];
-        $sql = "INSERT INTO envio (nome_cliente, endereco, forma_pag, data_envio, id_cliente) VALUES ('$nome', '$endereco', '$form', NOW(), '$id_cliente')";
+        $id_pedido = $_SESSION['id_pedido'];
+        $sql = "INSERT INTO envio (nome_cliente, endereco, forma_pag, data_envio, id_cliente, id_pedido) VALUES ('$nome', '$endereco', '$form', NOW(), '$id_cliente', '$id_pedido')";
         if(mysqli_query($connect, $sql)):
             header('Location: new_pedido.php');
         else:

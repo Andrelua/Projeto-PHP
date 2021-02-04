@@ -68,7 +68,7 @@ session_start();
             $consulta = "SELECT E.nome_cliente, E.endereco, E.forma_pag, E.data_envio, P.id_pedido, P.numero_pedido 
                         FROM envio AS E
                         INNER JOIN pedido_fz AS P
-                        ON E.id_cliente = P.id_cliente";
+                        ON E.id_pedido = P.id_pedido";
             $resultado = mysqli_query($connect, $consulta);
         ?>
         <div>
@@ -78,18 +78,18 @@ session_start();
             ?>
                 <div class="row">
                     <div class="col s12 m6">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                        <span class="card-title">#<?php echo $dados["numero_pedido"];?></span>
-                        <p>Nome do cliente: <?php echo $dados["nome_cliente"];?></p>
-                        <p>Endereço: <?php echo $dados["endereco"];?></p>
-                        <p>Data da compra: <?php echo $dados["data_envio"];?></p>
-                        <p>Forma de pagamento: <?php echo $dados["forma_pag"];?></p>
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">#<?php echo $dados["numero_pedido"];?></span>
+                                <p>Nome do cliente: <?php echo $dados["nome_cliente"];?></p>
+                                <p>Endereço: <?php echo $dados["endereco"];?></p>
+                                <p>Data da compra: <?php echo $dados["data_envio"];?></p>
+                                <p>Forma de pagamento: <?php echo $dados["forma_pag"];?></p>
+                            </div>
+                            <div class="card-action">
+                                <a href="meusprodutos.php?pdd=<?php echo $dados["id_pedido"];?>">Ver produtos</a>
+                            </div>
                         </div>
-                        <div class="card-action">
-                        <a href="meusprodutos.php?pdd=<?php echo $dados["id_pedido"];?>">Ver produtos</a>
-                        </div>
-                    </div>
                     </div>
                 </div>
             <?php
@@ -99,10 +99,8 @@ session_start();
     </div>
     <div>
         <?php
-            $consulta = "SELECT E.nome_cliente, E.endereco, E.forma_pag, E.data_envio, PE.id_pedido, PE.numero_pedido 
-                        FROM envio AS E
-                        INNER JOIN pedidos AS PE
-                        ON E.id_cliente = PE.id_cliente";
+            $id = $_SESSION['id_cliente'];
+            $consulta = "SELECT * FROM pedidos WHERE id_cliente = '$id'";
             $resultado = mysqli_query($connect, $consulta);
         ?>
         <div>
