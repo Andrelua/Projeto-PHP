@@ -1,4 +1,6 @@
 <?php
+//Essa página tem a função de listar os pedidos finalizados do cliente.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO

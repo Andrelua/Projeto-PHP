@@ -1,4 +1,6 @@
 <?php
+// Essa página registra os dados para o envio dos produtos.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO
@@ -99,6 +101,7 @@ endif;
             Nome Completo <input type="text" name="nome"> <br>
             Endereço (Rua/Bairro/Cidade/Número)
             <input type="text" name="endereco"> <br>
+            <!--Ainda falta mudar o input-->
             Forma de pagamento <input type="text" name="forma">
             <button class="btn waves-effect waves-light" type="submit" name="btn-dados">Enviar
                 <i class="material-icons right">done</i>

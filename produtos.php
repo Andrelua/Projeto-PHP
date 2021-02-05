@@ -1,4 +1,6 @@
 <?php
+    //Essa página armazena os produtos em arrays.
+
     $frutas = array(["indice"=>101, "nome"=>"Abacate", "imagem"=>"frutas/abacate.jpg", "preco"=>1.49, "tipo"=>"Und."],
     ["indice"=>102, "nome"=>"Banana", "imagem"=>"frutas/banana.png", "preco"=>0.99, "tipo"=>"Und."],
     ["indice"=>103, "nome"=>"Laranja", "imagem"=>"frutas/laranja.png", "preco"=>1.09, "tipo"=>"Und."],

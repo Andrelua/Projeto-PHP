@@ -1,4 +1,6 @@
 <?php
+//Essa página tem a função de deletar os produtos do carrinho.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 require_once 'produtos.php';

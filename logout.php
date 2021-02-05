@@ -1,4 +1,6 @@
 <?php
+//Essa página tem a função de sair da conta e deletar o pedido não finalizado.
+
 //Iniciando a SESSÃO
 session_start();
 //BANCO DE DADOS

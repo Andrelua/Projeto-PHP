@@ -1,4 +1,7 @@
 <?php
+//Essa página tem a função de criar um novo pedido automaticamente quando o cliente finaliza o último.
+
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO

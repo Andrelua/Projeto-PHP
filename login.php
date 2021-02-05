@@ -1,4 +1,6 @@
 <?php
+// Essa página faz a validação, para o cliente poder entrar na sua conta.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO

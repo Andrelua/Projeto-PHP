@@ -1,4 +1,6 @@
 <?php
+//Essa página faz o cadastro do cliente, armazenando no banco de dados.
+
 // Sessão
 session_start();
 //Conexão com o db

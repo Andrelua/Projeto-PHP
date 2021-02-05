@@ -1,4 +1,7 @@
 <?php
+//Essa página tem a função de finalizar o pedido, redirecionando o cliente para 'dados_entregas.php'.
+
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO

@@ -1,4 +1,6 @@
 <?php
+//Essa página é a barra de pesquisa.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO

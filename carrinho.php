@@ -1,4 +1,6 @@
 <?php
+// Essa página mostra os produtos adicionados, quantidade, preço, nome do produto e sua soma de preço.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 //SESSÃO
