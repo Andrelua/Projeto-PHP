@@ -81,6 +81,7 @@ endif;
 
                 <tbody>
                     <?php
+                        $valortot = 0;
                         while($dados=mysqli_fetch_array($resultado)){
                     ?>
                     <tr>
@@ -89,10 +90,16 @@ endif;
                         <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
                     </tr>
                     <?php 
+                        $valortot += $dados["preco_produto"];
                         }
                     ?>
                 </tbody>
             </table>
+        </div>
+        <div style="width: 100%; font-family: 'Roboto', sans-serif;">
+            <div class="card-panel teal lighten-2" style="width: 40%; float: right; text-align: center;">
+                <?php echo "O VALOR TOTAL PAGO FOI: <strong>R$ $valortot</strong>";?>       
+            </div>
         </div>
     </div>
 </body>
