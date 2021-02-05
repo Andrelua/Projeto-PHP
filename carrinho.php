@@ -87,36 +87,63 @@ endif;
                         </thead>
 
                         <tbody>
-                        <?php
-                        $valortot = 0;
-                        while($dados=mysqli_fetch_array($resultado)){
-                        ?>
-                            <tr>
-                                <td style="text-align: center;"><?php echo $dados["qtd_produto"];?></td>
-                                <td style="text-align: center;">R$<?php echo $dados["preco_produto"];?></td>
-                                <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
-                                <td><a href="delete.php?del=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
-                                <td><a href="edicao.php?edt=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
-                            </tr>
-                        <?php 
-                            $valortot += $dados["preco_produto"];
-                            }
-                        ?>
+                            <?php
+                            if (mysqli_num_rows($resultado) != 0):
+                                $valortot = 0;
+                                while($dados=mysqli_fetch_array($resultado)){
+                            ?>
+                                <tr>
+                                    <td style="text-align: center;"><?php echo $dados["qtd_produto"];?></td>
+                                    <td style="text-align: center;">R$<?php echo $dados["preco_produto"];?></td>
+                                    <td style="text-align: center;"><?php echo $dados["nome_produto"];?></td>
+                                    <td><a href="delete.php?del=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">delete</i></a></td>
+                                    <td><a href="edicao.php?edt=<?php echo $dados["id_produto"];?>" class="waves-effect waves-light btn"><i class="material-icons">edit</i></a></td>
+                                </tr>
+                        
                         </tbody>
+                        
+                        <?php 
+                                $valortot += $dados["preco_produto"];
+                                }
+                            else:
+                        ?>
+                            <div style="width: 100%; font-family: 'Roboto', sans-serif;">
+                                <div class="card-panel teal lighten-2" style="width: 100%; text-align: center;">
+                                    <?php echo "Carrinho vazio";?>       
+                                </div>
+                            </div>
+                        <?php
+                            endif;
+                        ?>
                     </table>
                </div>
             </div>
             
             <div style="width: 100%; font-family: 'Roboto', sans-serif;">
-                <div style="width: 22%; float: left;">        
-                    <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
-                        <i class="material-icons right">favorite_border</i>
-                    </button>
-                </div>
-                <div class="card-panel teal lighten-2" style="width: 20%; float: inline-start; text-align: center;">
-                    <?php echo "O VALOR TOTAL A PAGAR É: <strong>R$ $valortot</strong>";?>       
-                </div>
+                <?php 
+                    if (mysqli_num_rows($resultado) == 0):
+                ?>
+                    <div style="width: 22%; float: left;">        
+                        <button class="btn waves-effect waves-light disabled" type="submit" name="btn-finalizar">Finalizar compra
+                            <i class="material-icons right">favorite_border</i>
+                        </button>
+                    </div>
+                <?php 
+                    else:
+                ?>
+                    <div style="width: 22%; float: left;">        
+                        <button class="btn waves-effect waves-light" type="submit" name="btn-finalizar">Finalizar compra
+                            <i class="material-icons right">favorite_border</i>
+                        </button>
+                    </div>
+                    <div class="card-panel teal lighten-2" style="width: 20%; float: inline-start; text-align: center;">
+                        <?php echo "O VALOR TOTAL A PAGAR É: <strong>R$ $valortot</strong>";?>       
+                    </div>
+                <?php
+                    endif;
+                ?>
             </div>
+
         </form>
         
 </body>

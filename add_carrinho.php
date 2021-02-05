@@ -1,4 +1,6 @@
 <?php
+// Essa página está responsável por adicionar os produtos no carrinho.
+
 //BANCO DE DADOS
 require_once 'db_connect.php';
 require_once 'produtos.php';

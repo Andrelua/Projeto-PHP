@@ -100,7 +100,6 @@ endif;
             Endereço (Rua/Bairro/Cidade/Número)
             <input type="text" name="endereco"> <br>
             Forma de pagamento <input type="text" name="forma">
-
             <button class="btn waves-effect waves-light" type="submit" name="btn-dados">Enviar
                 <i class="material-icons right">done</i>
             </button>            
