@@ -101,8 +101,25 @@ endif;
             Nome Completo <input type="text" name="nome"> <br>
             Endereço (Rua/Bairro/Cidade/Número)
             <input type="text" name="endereco"> <br>
-            <!--Ainda falta mudar o input (não consigo)-->
-            Forma de pagamento <input type="text" name="forma">
+            Forma de pagamento: 
+                        <p>
+                            <label>
+                                <input name="forma" type="radio" value="Crédito"/>
+                                    <span>Crédito</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="forma" type="radio" value="Débito"/>
+                                    <span>Débito</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="forma" type="radio" value="Dinheiro"/>
+                                    <span>Dinheiro</span>
+                            </label>
+                        </p>
             <button class="btn waves-effect waves-light" type="submit" name="btn-dados">Enviar
                 <i class="material-icons right">done</i>
             </button>            
